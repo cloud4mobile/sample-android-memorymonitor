@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.mobiltec.c4m.samplememorymonitor"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- Required to unique identifies the device -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- Required to access C4M servers -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Required to use monitors -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- Required to access information about networks-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <meta-data android:name="c4m_app_secret"
+   		android:value="ZDY2M2Y3YWMtNTdiMi00NTU0LTkxMGItNWVjYmE2MDE1ZTUz" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <receiver
+			android:name="br.com.mobiltec.cloud4mobile.android.library.monitors.memory.MemorySynchronizationAlarmManager"
+			android:exported="false" >
+			<intent-filter>
+				<action android:name="br.com.mobiltec.cloud4mobile.android.MEMORY_SYNCHRONIZATION_ALARM" />
+			</intent-filter>
+		</receiver>
+    </application>
+
+</manifest>
